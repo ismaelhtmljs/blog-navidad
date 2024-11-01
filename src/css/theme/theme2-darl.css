@@ -1,0 +1,51 @@
+@import url(/src/css/color.css);
+
+/* dark theme */
+body.dark{
+    color: var(--blanco);
+    background-color: var(--negro-claro);
+}
+
+body.dark .header,
+body.dark .main,
+body.dark .aside-izquierdo,
+body.dark .navbar-pushbar,
+body.dark .footer{
+    background-color: var(--negro);
+    box-shadow: 0px 3px 4px var(--morado);
+}
+
+body.dark .close-pushbar{
+    color: var(--blanco);
+}
+
+body.dark article{
+    color: var(--blanco);
+    background-color: var(--blanco-oscuro);
+}
+
+body.dark .close-aside-pushbar{
+    color: var(--blanco);
+}
+
+body.dark .aside-izquierdo a{
+    color: var(--blanco);
+}
+
+body.dark article{
+    border: 0;
+}
+
+@keyframes resaltar-dark {
+    0% {
+        border: 2px solid #007BFF;
+        background-color: #e8f4ff;
+    }
+    100% {
+        background-color: var(--blanco-oscuro);
+    }
+}
+/* Aplica la animación solo al artículo seleccionado */
+body.dark article:target {
+    animation: resaltar-dark 2s forwards; /* Cambia en 2 segundos */
+}

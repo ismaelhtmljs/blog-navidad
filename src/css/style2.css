@@ -1,0 +1,213 @@
+/* importando colores */
+@import url(color.css);
+
+/* reinicio de la web */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* body de la pagina web */
+body{
+    display: grid;
+    font-family: Arial, sans-serif;
+    grid-template-areas: 
+        "header header"
+        "main aside-sidebar"
+        "footer footer";
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.header,
+.main,
+.aside-izquierdo,
+.navbar-pushbar,
+.footer{
+    box-shadow: 0px 3px 4px var(--negro);
+    border-radius: 5px;
+}
+
+/* header */
+.header{
+    display: flex;
+    background-color: var(--cornsilk);
+    flex-direction: column;
+    align-items: center;
+    grid-area: header;
+}
+.header h1{
+    margin-top: 1%;
+}
+
+/* navbar de la pagina */
+.navbar-pushbar{
+    position: fixed;
+    left: -620px;
+    background-color: var(--tan);
+    width: 350px;
+    height: 100vh;
+    transition: ease 0.5s;
+}
+.navbar-pushbar h1,ul,li{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.open-pushbar{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.close-pushbar{
+    margin-left: 1%;
+    border: 0;
+    background-color: transparent;
+    font-size: xx-large;
+}
+
+.open-aside-pushbar{
+    display: none;
+}
+.close-aside-pushbar{
+    display: none;
+}
+
+.theme2-dark{
+    margin-top: 2%;
+}
+
+.navbar-pushbar a{
+    color: var(--blanco);
+    text-decoration: none;
+}
+.navbar-pushbar a:hover{
+    text-decoration: underline;
+}
+
+/* pushbar */
+.navbar-pushbar.active{
+    left: 0;
+}
+
+/* main de la pagina web */
+.main{
+    background-color: var(--bisque);
+    grid-area: main;
+}
+
+/* articulos */
+article{
+    color: var(--negro);
+    background-color: var(--blanco);
+    min-height: auto;
+    border: 2px solid var(--cornsilk);
+    max-width: 66%;
+    margin-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    word-wrap: break-word;
+}
+article h1{
+    font-size: 30px;
+    text-decoration: underline;
+}
+article p{
+    margin-top: 3%;
+    box-sizing: content-box;
+}
+
+/* aside izquierdo */
+.aside-izquierdo{
+    grid-area: aside-sidebar;
+    background-color: antiquewhite;
+    padding: 15px;
+    position: sticky;
+    height: max-content;
+    top: 1rem;
+}
+.aside-izquierdo h2{
+    margin-bottom: 5%;
+}
+.aside-izquierdo a{
+    display: block;
+    margin-bottom: 5%;
+    color: var(--negro);
+    text-decoration: none;
+}
+.aside-izquierdo a:hover{
+    text-decoration: underline;
+}
+
+/* Definimos la animación para cambiar el estilo */
+@keyframes resaltar {
+    0% {
+        border: 1px solid #007BFF;
+        background-color: #e8f4ff;
+    }
+    100% {
+        background-color: var(--blanco);
+    }
+}
+/* Aplica la animación solo al artículo seleccionado */
+article:target {
+    animation: resaltar 2s ease-in; /* Cambia en 2 segundos */
+}
+
+/* footer */
+.footer{
+    text-align: center;
+    grid-area: footer;
+    background-color: var(--Durazno-suave);
+}
+
+/* diseño responsive */
+@media (max-width: 768px) {
+    body {
+        grid-template-areas:
+            "header"
+            "aside-sidebar"
+            "main"
+            "footer";
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .header h1{
+        margin-left: 2%;
+        font-size: 23px;
+    }
+    .close-aside-pushbar{
+        display: block;
+    }
+    .open-aside-pushbar{
+        display: block;
+    }
+    .aside-izquierdo{
+        position: fixed; 
+        top: 0; 
+        left: -660px; /* Ocultar fuera de vista */
+        height: 100%; 
+        padding: 15px;
+        overflow-y: auto; 
+        z-index: 1000; 
+        transition: ease 0.5s;
+    }
+    .close-aside-pushbar{
+        margin-left: 1%;
+        border: 0;
+        background-color: transparent;
+        font-size: xx-large;
+    }
+    .aside-izquierdo.active{
+        transform: translateX(660px)
+    }
+}
